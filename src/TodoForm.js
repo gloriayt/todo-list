@@ -13,7 +13,7 @@ function TodoForm(props) {
                 addTodo(task);
                 resetTask();
             }}>
-            <Textfield 
+            <Textfield style={{marginBottom:"1.5rem", marginLeft:"1.5rem", marginRight:"1.5rem", width:"92%"}}
                 label="Add a new task"
                 value={task}
                 onChange={changeTask}
