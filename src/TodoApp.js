@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import uuid from "uuid/v4"
 import "./TodoApp.css";
 import TodoForm from "./TodoForm";
@@ -6,11 +6,15 @@ import TodoList from "./TodoList";
 import Grid from "@material-ui/core/Grid";
 
 function TodoApp(props) {
-    const initialTodos = [
-        {id: uuid(), task: "Wash the dog!", isComplete: false},
-        {id: uuid(), task: "Eat!", isComplete: true}
-    ];
+    const initialTodos = JSON.parse(window.localStorage.getItem("todos")
+        || [{id: uuid(), task: "Wash the dog!", isComplete: false}]
+    )
     const [todos, setTodos] = useState(initialTodos);
+
+    useEffect(() => {
+        window.localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
+
     const addTodo = (newTask) => {
         setTodos([...todos, {id: uuid(), task: newTask, isComplete: false}]);
     };
@@ -30,6 +34,7 @@ function TodoApp(props) {
         );
         setTodos(tempTodo);
     };
+
     return (
         <Grid container justify="center">
             <Grid item xs={11} md={8} lg={4}/>
@@ -45,8 +50,3 @@ function TodoApp(props) {
 }
 
 export default TodoApp;
-
-// manage state for to-dos (id, task, completed?)
-// have to-do form
-// have to-do list with:
-//   to-do items

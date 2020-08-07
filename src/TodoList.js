@@ -12,7 +12,7 @@ function TodoList(props) {
     return (
         <Paper style={{marginLeft:"3rem", marginRight:"3rem",width:"100%"}}>
             <List>
-                {todos.length < 1 ? <p style={{marginLeft:"3rem"}}>Nothing to do!</p> 
+                {todos.length < 1 ? <p style={{marginLeft:"3rem", border:"none"}}>Nothing to do!</p> 
                 : todos.map((todo) =>
                     <>
                     <TodoItem 
@@ -21,7 +21,6 @@ function TodoList(props) {
                         editTodo={editTodo}
                         toggleComplete={toggleComplete}
                     />
-                    <Divider />
                     </>
                 )}
             </List>

@@ -17,19 +17,22 @@ function TodoItem(props) {
     const [editMode, toggleEdit] = useState(false);
     const [task, changeTask, resetTask] = useInputState("");
     return (
-        <ListItem>
+        <ListItem style={{height: "4rem"}}>
             {editMode === true 
                 ? 
                 <>
-                    <form onSubmit={(event) => {
-                        event.preventDefault();
-                        editTodo(todo.id, task);
-                        toggleEdit(!editMode)
+                    <form style={{width: "100%"}}
+                        onSubmit={(event) => {
+                            event.preventDefault();
+                            editTodo(todo.id, task);
+                            toggleEdit(!editMode)
                     }}>
                     <Textfield 
                         label={todo.task}
                         value={task}
                         onChange={changeTask}
+                        autoFocus
+                        style={{width: "90%", marginLeft: "1rem"}}
                     />
                     </form>
                 </>
