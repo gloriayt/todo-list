@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 
 function TodoApp(props) {
     const initialTodos = JSON.parse(window.localStorage.getItem("todos")
-        || [{id: uuid(), task: "Wash the dog!", isComplete: false}]
+        || JSON.stringify([{id: uuid(), task: "Wash the dog!", isComplete: false}])
     )
     const [todos, setTodos] = useState(initialTodos);
 
